@@ -16,7 +16,10 @@ class AxonVision extends StatelessWidget {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return GetMaterialApp.router(
-      theme: ThemeData(useMaterial3: false),
+      theme: ThemeData(
+        useMaterial3: false,
+        scaffoldBackgroundColor: Colors.white,
+      ),
       title: 'Axon Vision',
       useInheritedMediaQuery: true,
       debugShowCheckedModeBanner: false,
