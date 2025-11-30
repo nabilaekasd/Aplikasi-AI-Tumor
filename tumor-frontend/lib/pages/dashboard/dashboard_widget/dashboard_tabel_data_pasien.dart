@@ -27,8 +27,8 @@ class DashboardTabelDataPasien extends StatelessWidget {
             rowHeight: 40,
 
             verticalScrollPhysics: isHideID == true
-                ? NeverScrollableScrollPhysics()
-                : ScrollPhysics(),
+                ? const NeverScrollableScrollPhysics()
+                : const ScrollPhysics(),
             columns: <GridColumn>[
               GridColumn(
                 visible: isHideID == true ? false : true,

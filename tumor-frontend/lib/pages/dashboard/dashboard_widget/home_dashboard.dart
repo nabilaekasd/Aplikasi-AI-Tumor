@@ -45,7 +45,7 @@ class Home extends StatelessWidget {
 
           Container(
             width: SizeConfig.blockSizeHorizontal * 70,
-            height: 300,
+            height: 242,
             decoration: BoxDecoration(
               border: Border.all(color: AppColors.greyDisabled),
               borderRadius: BorderRadius.circular(8),
