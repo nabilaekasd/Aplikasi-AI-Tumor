@@ -16,16 +16,19 @@ class DashboardTabelAnalisis extends StatelessWidget {
       builder: (DashboardController dashboardController) => SfDataGrid(
         gridLinesVisibility: GridLinesVisibility.both,
         headerGridLinesVisibility: GridLinesVisibility.both,
-        source: dashboardController.analisisDataSource, //todo: lanjut analis
+        source: dashboardController.analisisDataSource, //todo: lanjut analisis
+
+        headerRowHeight: 40,
+        rowHeight: 40,
         columns: <GridColumn>[
           GridColumn(
             width: SizeConfig.horizontal(17.4),
             columnName: 'name',
             label: Container(
-              color: AppColors.greyDisabled,
+              color: AppColors.greySecond,
               alignment: Alignment.center,
               child: PoppinsTextView(
-                size: SizeConfig.safeBlockHorizontal * 1.2,
+                size: SizeConfig.safeBlockHorizontal * 1.0,
                 value: 'Nama Pasien',
                 fontWeight: FontWeight.bold,
               ),
@@ -35,10 +38,10 @@ class DashboardTabelAnalisis extends StatelessWidget {
             columnName: 'tanggal_scan',
             width: SizeConfig.horizontal(17.4),
             label: Container(
-              color: AppColors.greyDisabled,
+              color: AppColors.greySecond,
               alignment: Alignment.center,
               child: PoppinsTextView(
-                size: SizeConfig.safeBlockHorizontal * 1.2,
+                size: SizeConfig.safeBlockHorizontal * 1.0,
                 value: 'Tanggal Scan',
                 fontWeight: FontWeight.bold,
               ),
@@ -48,10 +51,10 @@ class DashboardTabelAnalisis extends StatelessWidget {
             columnName: 'status',
             width: SizeConfig.horizontal(17.4),
             label: Container(
-              color: AppColors.greyDisabled,
+              color: AppColors.greySecond,
               alignment: Alignment.center,
               child: PoppinsTextView(
-                size: SizeConfig.safeBlockHorizontal * 1.2,
+                size: SizeConfig.safeBlockHorizontal * 1.0,
                 value: 'Status',
                 fontWeight: FontWeight.bold,
               ),
@@ -61,10 +64,10 @@ class DashboardTabelAnalisis extends StatelessWidget {
             width: SizeConfig.horizontal(17.4),
             columnName: 'estimasi',
             label: Container(
-              color: AppColors.greyDisabled,
+              color: AppColors.greySecond,
               alignment: Alignment.center,
               child: PoppinsTextView(
-                size: SizeConfig.safeBlockHorizontal * 1.2,
+                size: SizeConfig.safeBlockHorizontal * 1.0,
                 value: 'Estimasi Selesai',
                 fontWeight: FontWeight.bold,
               ),

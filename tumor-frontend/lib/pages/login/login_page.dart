@@ -23,7 +23,7 @@ class LoginPage extends StatelessWidget {
       elevation: 0,
       color: AppColors.black,
       statusBarColor: AppColors.black,
-      colorScaffold: AppColors.bgColor,
+      colorScaffold: AppColors.white,
       statusBarBrightness: Brightness.light,
       view: GetBuilder<LoginController>(
         init: LoginController(),
@@ -47,7 +47,7 @@ class LoginPage extends StatelessWidget {
                 ),
 
                 PoppinsTextView(
-                  value: 'Silahkan login dengan akun anda',
+                  value: 'Silakan login dengan akun Anda',
                   size: SizeConfig.safeBlockHorizontal * 1.3,
                 ),
                 SpaceSizer(vertical: 8),
@@ -55,7 +55,8 @@ class LoginPage extends StatelessWidget {
                   title: '',
                   width: 30,
                   hintText: 'Username',
-                  borderRadius: 20,
+                  fillColor: AppColors.white,
+                  borderRadius: 1.5,
                 ),
                 SpaceSizer(vertical: 2),
                 CustomTextPasswordField(
@@ -63,7 +64,8 @@ class LoginPage extends StatelessWidget {
                   title: '',
                   isPasswordField: true,
                   hintText: 'Password',
-                  borderRadius: 20,
+                  fillColor: AppColors.white,
+                  borderRadius: 1.5,
                 ),
                 SpaceSizer(vertical: 2),
                 Padding(
@@ -87,6 +89,7 @@ class LoginPage extends StatelessWidget {
                 CustomFlatButton(
                   width: SizeConfig.safeBlockHorizontal * 16,
                   text: 'Login',
+                  radius: 1.5,
                   onTap: () {
                     router.replaceNamed('dashboard');
                   },

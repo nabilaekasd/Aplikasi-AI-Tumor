@@ -12,7 +12,6 @@ import 'package:axon_vision/pages/global_widgets/frame/frame_scaffold.dart';
 import 'package:axon_vision/pages/global_widgets/text_fonts/poppins_text_view.dart';
 import 'package:axon_vision/utils/app_colors.dart';
 import 'package:axon_vision/utils/asset_list.dart';
-import 'package:axon_vision/utils/fluid_space_sizer.dart';
 import 'package:axon_vision/utils/size_config.dart';
 import 'package:axon_vision/utils/space_sizer.dart';
 import 'package:flutter/material.dart';
@@ -29,7 +28,7 @@ class DashboardPage extends StatelessWidget {
       elevation: 0,
       color: AppColors.black,
       statusBarColor: AppColors.black,
-      colorScaffold: AppColors.bgColor,
+      colorScaffold: AppColors.white,
       statusBarBrightness: Brightness.light,
       view: GetBuilder<DashboardController>(
         init: DashboardController(),
@@ -64,56 +63,77 @@ class DashboardPage extends StatelessWidget {
                     ),
                   ],
                 ),
-                SingleChildScrollView(
-                  physics: dashboardController.activeMenuIndex == 4
-                      ? NeverScrollableScrollPhysics()
-                      : BouncingScrollPhysics(),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SpaceSizer(vertical: 3),
-                      Row(
-                        children: [
-                          PoppinsTextView(
-                            value: dashboardController.activeMenuIndex == 0
-                                ? 'Dashboard'
-                                : dashboardController.activeMenuIndex == 5
-                                ? 'Pengaturan Profil'
-                                : 'Detail Pasien',
-                            size: SizeConfig.safeBlockHorizontal * 1.6,
-                            fontWeight: FontWeight.bold,
-                          ),
-                          SpaceSizer(
-                            horizontal: dashboardController.activeMenuIndex == 0
-                                ? 49
-                                : dashboardController.activeMenuIndex == 5
-                                ? 44
-                                : 47,
-                          ),
-                          PoppinsTextView(
-                            value: 'Halo, User',
-                            size: SizeConfig.safeBlockHorizontal * 1.5,
-                            fontWeight: FontWeight.w400,
-                          ),
-                          SpaceSizer(horizontal: 2),
-                          CircleAvatar(child: Icon(Icons.person)),
-                          FluidSpaceSizer(minSpace: 0.1, maxSpace: 2),
-                        ],
-                      ),
-                      SpaceSizer(vertical: 4),
-                      SizedBox(
-                        width: SizeConfig.safeBlockHorizontal * 74,
-                        child: Divider(
-                          height: SizeConfig.safeBlockHorizontal * 0.2,
-                          thickness: 1,
-                          indent: 6,
-                          endIndent: 60,
-                          color: AppColors.greyDisabled,
+                Container(
+                  margin: EdgeInsets.symmetric(
+                    horizontal: SizeConfig.horizontal(2),
+                  ),
+                  width: 1,
+                  height: SizeConfig.safeBlockVertical * 90,
+                  color: AppColors.greyDisabled.withValues(alpha: 0.5),
+                ),
+                Expanded(
+                  child: SingleChildScrollView(
+                    physics: dashboardController.activeMenuIndex == 4
+                        ? NeverScrollableScrollPhysics()
+                        : BouncingScrollPhysics(),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SpaceSizer(vertical: 3),
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            PoppinsTextView(
+                              value: dashboardController.activeMenuIndex == 0
+                                  ? 'Dashboard'
+                                  : dashboardController.activeMenuIndex == 5
+                                  ? 'Pengaturan Profil'
+                                  : 'Detail Pasien',
+                              size: SizeConfig.safeBlockHorizontal * 1.5,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            const Spacer(),
+                            PoppinsTextView(
+                              value: 'Halo, User',
+                              size: SizeConfig.safeBlockHorizontal * 1.1,
+                              fontWeight: FontWeight.w500,
+                            ),
+                            SpaceSizer(horizontal: 1),
+
+                            Container(
+                              padding: const EdgeInsets.all(2),
+                              decoration: const BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Colors.transparent,
+                              ),
+                              child: CircleAvatar(
+                                radius: SizeConfig.safeBlockHorizontal * 1.2,
+                                backgroundColor: AppColors.bgColor,
+                                child: Icon(
+                                  Icons.person,
+                                  color: Colors.white,
+                                  size: SizeConfig.safeBlockHorizontal * 1.2,
+                                ),
+                              ),
+                            ),
+                            SpaceSizer(horizontal: 2),
+                          ],
                         ),
-                      ),
-                      SpaceSizer(vertical: 3),
-                      _buildActiveMenu(dashboardController),
-                    ],
+                        SpaceSizer(vertical: 2),
+                        SizedBox(
+                          width: SizeConfig.safeBlockHorizontal * 74,
+                          child: Divider(
+                            height: SizeConfig.safeBlockHorizontal * 0.2,
+                            thickness: 1,
+                            indent: 6,
+                            endIndent: 60,
+                            color: AppColors.greyDisabled,
+                          ),
+                        ),
+                        SpaceSizer(vertical: 3),
+                        _buildActiveMenu(dashboardController),
+                      ],
+                    ),
                   ),
                 ),
               ],

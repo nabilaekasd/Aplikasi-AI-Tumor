@@ -19,7 +19,12 @@ class DashboardTabelDataPasien extends StatelessWidget {
           SfDataGrid(
             gridLinesVisibility: GridLinesVisibility.both,
             headerGridLinesVisibility: GridLinesVisibility.both,
-            source: dashboardController.pasienDataSource,
+            source: isHideID == true
+                ? dashboardController.homePasienDataSource
+                : dashboardController.pasienDataSource,
+
+            headerRowHeight: 40,
+            rowHeight: 40,
 
             verticalScrollPhysics: isHideID == true
                 ? NeverScrollableScrollPhysics()
@@ -31,7 +36,7 @@ class DashboardTabelDataPasien extends StatelessWidget {
 
                 columnName: 'id_patient',
                 label: Container(
-                  color: AppColors.greyDisabled,
+                  color: AppColors.greySecond,
                   alignment: Alignment.center,
                   child: PoppinsTextView(
                     size: SizeConfig.safeBlockHorizontal * 1.2,
@@ -45,10 +50,10 @@ class DashboardTabelDataPasien extends StatelessWidget {
                 width: SizeConfig.horizontal(17.4),
                 columnName: 'name',
                 label: Container(
-                  color: AppColors.greyDisabled,
+                  color: AppColors.greySecond,
                   alignment: Alignment.center,
                   child: PoppinsTextView(
-                    size: SizeConfig.safeBlockHorizontal * 1.2,
+                    size: SizeConfig.safeBlockHorizontal * 1.0,
                     value: 'Nama Pasien',
                     fontWeight: FontWeight.bold,
                     overFlow: TextOverflow.ellipsis,
@@ -59,10 +64,10 @@ class DashboardTabelDataPasien extends StatelessWidget {
                 columnName: 'tanggal_lahir',
                 width: SizeConfig.horizontal(17.4),
                 label: Container(
-                  color: AppColors.greyDisabled,
+                  color: AppColors.greySecond,
                   alignment: Alignment.center,
                   child: PoppinsTextView(
-                    size: SizeConfig.safeBlockHorizontal * 1.2,
+                    size: SizeConfig.safeBlockHorizontal * 1.0,
                     value: 'Tanggal Lahir',
                     fontWeight: FontWeight.bold,
                   ),
@@ -72,10 +77,10 @@ class DashboardTabelDataPasien extends StatelessWidget {
                 columnName: 'status',
                 width: SizeConfig.horizontal(isHideID == true ? 17.4 : 10),
                 label: Container(
-                  color: AppColors.greyDisabled,
+                  color: AppColors.greySecond,
                   alignment: Alignment.center,
                   child: PoppinsTextView(
-                    size: SizeConfig.safeBlockHorizontal * 1.2,
+                    size: SizeConfig.safeBlockHorizontal * 1.0,
                     value: 'Status',
                     fontWeight: FontWeight.bold,
                   ),
@@ -85,10 +90,10 @@ class DashboardTabelDataPasien extends StatelessWidget {
                 width: SizeConfig.horizontal(isHideID == true ? 17.4 : 15),
                 columnName: 'action',
                 label: Container(
-                  color: AppColors.greyDisabled,
+                  color: AppColors.greySecond,
                   alignment: Alignment.center,
                   child: PoppinsTextView(
-                    size: SizeConfig.safeBlockHorizontal * 1.2,
+                    size: SizeConfig.safeBlockHorizontal * 1.0,
                     value: 'Aksi',
                     fontWeight: FontWeight.bold,
                   ),

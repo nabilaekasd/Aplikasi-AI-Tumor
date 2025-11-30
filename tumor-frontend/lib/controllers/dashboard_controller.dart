@@ -13,6 +13,7 @@ class DashboardController extends GetxController {
   List<DataPasienModel> originalPasienData = <DataPasienModel>[];
   TextEditingController searchController = TextEditingController();
   late PasienDataSource pasienDataSource;
+  late PasienDataSource homePasienDataSource;
   late AnalisisDataSource analisisDataSource;
   final RxBool isSearching = RxBool(false);
   final int pageSize = 6;
@@ -32,6 +33,10 @@ class DashboardController extends GetxController {
     originalPasienData = List.from(pasienData);
     pasienDataSource = PasienDataSource(
       dataPasien: pasienData,
+      onUploadTap: handledChangeScreenDynamic,
+    );
+    homePasienDataSource = PasienDataSource(
+      dataPasien: pasienData.take(5).toList(),
       onUploadTap: handledChangeScreenDynamic,
     );
   }
