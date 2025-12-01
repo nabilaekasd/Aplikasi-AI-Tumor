@@ -19,6 +19,7 @@ class Home extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          // 1. HEADER STATISTIK
           PoppinsTextView(
             value: 'Selamat Datang, User!',
             size: SizeConfig.safeBlockHorizontal * 1.5,
@@ -34,22 +35,26 @@ class Home extends StatelessWidget {
               DashboardBlueCard(title: 'Analisis Selesai', subtitle: 'Z'),
             ],
           ),
-          SpaceSizer(vertical: 5),
 
+          SpaceSizer(vertical: 5), // Jarak pemisah yang lega
+          // 2. TABEL DAFTAR PASIEN
           PoppinsTextView(
             value: 'Daftar Pasien Saya',
             size: SizeConfig.safeBlockHorizontal * 1.3,
             fontWeight: FontWeight.bold,
           ),
-          SpaceSizer(vertical: 1.5),
+          SpaceSizer(vertical: 1.5), // Jarak ke tabel
 
           Container(
-            width: SizeConfig.blockSizeHorizontal * 70,
-            height: 242,
             decoration: BoxDecoration(
               border: Border.all(color: AppColors.greyDisabled),
               borderRadius: BorderRadius.circular(8),
             ),
+            width: SizeConfig.blockSizeHorizontal * 70,
+
+            // SAYA NAIKKAN SEDIKIT JADI 250 BIAR AMAN
+            height: 250,
+
             child: dashboardController.pasienData.isEmpty
                 ? Center(
                     child: Padding(
@@ -62,11 +67,14 @@ class Home extends StatelessWidget {
                   )
                 : const DashboardTabelDataPasien(isHideID: true),
           ),
+
           SpaceSizer(vertical: 1),
+
+          // TOMBOL LIHAT SEMUA (Dipindah ke Kanan)
           SizedBox(
             width: SizeConfig.blockSizeHorizontal * 70,
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.end, // <--- Rata Kanan
               children: [
                 CustomFlatButton(
                   radius: 1.0,
@@ -82,40 +90,48 @@ class Home extends StatelessWidget {
               ],
             ),
           ),
-          SpaceSizer(vertical: 4),
+
+          SpaceSizer(vertical: 4), // Jarak lega ke seksi berikutnya
+          // 3. TABEL SCAN ANALISIS
           PoppinsTextView(
             value: 'Scan Sedang Dianalisis',
-            size: SizeConfig.safeBlockHorizontal * 1.3,
+            size: SizeConfig.safeBlockHorizontal * 1.3, // Font dibesarkan
             fontWeight: FontWeight.bold,
           ),
           SpaceSizer(vertical: 1.5),
 
           Container(
-            width: SizeConfig.blockSizeHorizontal * 70,
-            height: 162,
             decoration: BoxDecoration(
               border: Border.all(color: AppColors.greyDisabled),
               borderRadius: BorderRadius.circular(8),
             ),
+            width: SizeConfig.blockSizeHorizontal * 70,
+
+            // TINGGI UNTUK 3 BARIS (160 + buffer)
+            height: 170,
+
             child: const DashboardTabelAnalisis(),
           ),
+
           SpaceSizer(vertical: 1),
+
+          // TOMBOL REFRESH (Dipindah ke Kanan)
           SizedBox(
             width: SizeConfig.blockSizeHorizontal * 70,
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.end, // <--- Rata Kanan
               children: [
                 CustomFlatButton(
                   icon: Icons.refresh,
-                  colorIconImage: AppColors.blueDark,
+                  colorIconImage: AppColors.blueDark, // Icon biru
                   radius: 1.0,
                   text: 'Refresh Status',
                   onTap: () {},
                   width: SizeConfig.safeBlockHorizontal * 12,
                   height: SizeConfig.safeBlockVertical * 4,
-                  backgroundColor: AppColors.white,
-                  borderColor: AppColors.blueDark,
-                  textColor: AppColors.blueDark,
+                  backgroundColor: AppColors.white, // Background Putih
+                  borderColor: AppColors.blueDark, // Border Biru
+                  textColor: AppColors.blueDark, // Teks Biru
                   textSize: SizeConfig.safeBlockHorizontal * 0.9,
                 ),
               ],

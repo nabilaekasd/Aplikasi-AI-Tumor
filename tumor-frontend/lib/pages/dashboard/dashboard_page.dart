@@ -43,6 +43,7 @@ class DashboardPage extends StatelessWidget {
               ),
             ),
             child: Row(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Column(
                   children: [
@@ -99,7 +100,6 @@ class DashboardPage extends StatelessWidget {
                               fontWeight: FontWeight.w500,
                             ),
                             SpaceSizer(horizontal: 1),
-
                             Container(
                               padding: const EdgeInsets.all(2),
                               decoration: const BoxDecoration(
@@ -107,12 +107,12 @@ class DashboardPage extends StatelessWidget {
                                 color: Colors.transparent,
                               ),
                               child: CircleAvatar(
-                                radius: SizeConfig.safeBlockHorizontal * 1.2,
+                                radius: SizeConfig.safeBlockHorizontal * 1.3,
                                 backgroundColor: AppColors.bgColor,
                                 child: Icon(
                                   Icons.person,
                                   color: Colors.white,
-                                  size: SizeConfig.safeBlockHorizontal * 1.2,
+                                  size: SizeConfig.safeBlockHorizontal * 1.3,
                                 ),
                               ),
                             ),

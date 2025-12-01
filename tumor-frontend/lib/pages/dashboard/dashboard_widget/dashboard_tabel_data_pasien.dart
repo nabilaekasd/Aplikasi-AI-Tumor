@@ -23,9 +23,11 @@ class DashboardTabelDataPasien extends StatelessWidget {
                 ? dashboardController.homePasienDataSource
                 : dashboardController.pasienDataSource,
 
+            // === BAGIAN INI WAJIB ADA ===
             headerRowHeight: 40,
             rowHeight: 40,
 
+            // ===========================
             verticalScrollPhysics: isHideID == true
                 ? const NeverScrollableScrollPhysics()
                 : const ScrollPhysics(),
