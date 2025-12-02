@@ -42,7 +42,7 @@ class AnalisisDataSource extends DataGridSource {
           alignment: Alignment.centerLeft,
           child: PoppinsTextView(
             value: dataGridCell.value.toString(),
-            size: SizeConfig.safeBlockHorizontal * 1.2,
+            size: SizeConfig.safeBlockHorizontal * 0.8,
           ),
         );
       }).toList(),

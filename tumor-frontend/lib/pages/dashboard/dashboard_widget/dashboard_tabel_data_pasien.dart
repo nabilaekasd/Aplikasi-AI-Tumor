@@ -17,31 +17,31 @@ class DashboardTabelDataPasien extends StatelessWidget {
       builder: (DashboardController dashboardController) => Column(
         children: [
           SfDataGrid(
+            columnWidthMode: ColumnWidthMode.fill,
             gridLinesVisibility: GridLinesVisibility.both,
             headerGridLinesVisibility: GridLinesVisibility.both,
             source: isHideID == true
                 ? dashboardController.homePasienDataSource
                 : dashboardController.pasienDataSource,
 
-            // === BAGIAN INI WAJIB ADA ===
-            headerRowHeight: 40,
-            rowHeight: 40,
+            shrinkWrapRows: true,
 
-            // ===========================
+            headerRowHeight: 35,
+            rowHeight: 35,
+
             verticalScrollPhysics: isHideID == true
                 ? const NeverScrollableScrollPhysics()
                 : const ScrollPhysics(),
             columns: <GridColumn>[
               GridColumn(
                 visible: isHideID == true ? false : true,
-                width: SizeConfig.horizontal(isHideID == true ? 17.4 : 10),
 
                 columnName: 'id_patient',
                 label: Container(
                   color: AppColors.greySecond,
                   alignment: Alignment.center,
                   child: PoppinsTextView(
-                    size: SizeConfig.safeBlockHorizontal * 1.2,
+                    size: SizeConfig.safeBlockHorizontal * 0.8,
                     value: 'ID Pasien',
                     fontWeight: FontWeight.bold,
                   ),
@@ -49,13 +49,12 @@ class DashboardTabelDataPasien extends StatelessWidget {
               ),
 
               GridColumn(
-                width: SizeConfig.horizontal(17.4),
                 columnName: 'name',
                 label: Container(
                   color: AppColors.greySecond,
                   alignment: Alignment.center,
                   child: PoppinsTextView(
-                    size: SizeConfig.safeBlockHorizontal * 1.0,
+                    size: SizeConfig.safeBlockHorizontal * 0.8,
                     value: 'Nama Pasien',
                     fontWeight: FontWeight.bold,
                     overFlow: TextOverflow.ellipsis,
@@ -64,12 +63,11 @@ class DashboardTabelDataPasien extends StatelessWidget {
               ),
               GridColumn(
                 columnName: 'tanggal_lahir',
-                width: SizeConfig.horizontal(17.4),
                 label: Container(
                   color: AppColors.greySecond,
                   alignment: Alignment.center,
                   child: PoppinsTextView(
-                    size: SizeConfig.safeBlockHorizontal * 1.0,
+                    size: SizeConfig.safeBlockHorizontal * 0.8,
                     value: 'Tanggal Lahir',
                     fontWeight: FontWeight.bold,
                   ),
@@ -77,25 +75,23 @@ class DashboardTabelDataPasien extends StatelessWidget {
               ),
               GridColumn(
                 columnName: 'status',
-                width: SizeConfig.horizontal(isHideID == true ? 17.4 : 10),
                 label: Container(
                   color: AppColors.greySecond,
                   alignment: Alignment.center,
                   child: PoppinsTextView(
-                    size: SizeConfig.safeBlockHorizontal * 1.0,
+                    size: SizeConfig.safeBlockHorizontal * 0.8,
                     value: 'Status',
                     fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
               GridColumn(
-                width: SizeConfig.horizontal(isHideID == true ? 17.4 : 15),
                 columnName: 'action',
                 label: Container(
                   color: AppColors.greySecond,
                   alignment: Alignment.center,
                   child: PoppinsTextView(
-                    size: SizeConfig.safeBlockHorizontal * 1.0,
+                    size: SizeConfig.safeBlockHorizontal * 0.8,
                     value: 'Aksi',
                     fontWeight: FontWeight.bold,
                   ),

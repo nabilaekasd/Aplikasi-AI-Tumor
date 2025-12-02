@@ -19,49 +19,110 @@ class LeftTextMenu extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SpaceSizer(vertical: 4),
-        CustomRippleButton(
-          onTap: () => onMenuTap(0),
-          child: PoppinsTextView(
-            value: 'Dashboard',
-            size: SizeConfig.safeBlockHorizontal * 1.3,
-            fontWeight: activeIndex == 0 ? FontWeight.bold : FontWeight.w400,
-            color: activeIndex == 0 ? AppColors.bgColor : AppColors.black,
-          ),
+        SpaceSizer(vertical: 2),
+
+        _buildMenuItem(
+          index: 0,
+          label: 'Dashboard',
+          icon: Icons.dashboard_outlined,
+          isActive: activeIndex == 0,
         ),
-        SpaceSizer(vertical: 4),
-        CustomRippleButton(
-          onTap: () => onMenuTap(1),
-          child: PoppinsTextView(
-            value: 'Data Pasien',
-            size: SizeConfig.safeBlockHorizontal * 1.3,
-            fontWeight:
-                activeIndex == 1 ||
-                    activeIndex == 2 ||
-                    activeIndex == 3 ||
-                    activeIndex == 4
-                ? FontWeight.bold
-                : FontWeight.w400,
-            color:
-                activeIndex == 1 ||
-                    activeIndex == 2 ||
-                    activeIndex == 3 ||
-                    activeIndex == 4
-                ? AppColors.bgColor
-                : AppColors.black,
-          ),
+
+        SpaceSizer(vertical: 2),
+
+        _buildMenuItem(
+          index: 1,
+          label: 'Data Pasien',
+          icon: Icons.people_outline,
+          isActive: [1, 2, 3, 4].contains(activeIndex),
         ),
-        SpaceSizer(vertical: 4),
-        CustomRippleButton(
-          onTap: () => onMenuTap(5),
-          child: PoppinsTextView(
-            value: 'Pengaturan Profil',
-            size: SizeConfig.safeBlockHorizontal * 1.3,
-            fontWeight: activeIndex == 5 ? FontWeight.bold : FontWeight.w400,
-            color: activeIndex == 5 ? AppColors.bgColor : AppColors.black,
+
+        SpaceSizer(vertical: 2),
+
+        _buildMenuItem(
+          index: 5,
+          label: 'Pengaturan Profil',
+          icon: Icons.settings_outlined,
+          isActive: activeIndex == 5,
+        ),
+        SpaceSizer(vertical: 20),
+
+        Divider(color: AppColors.grey.withValues(alpha: 0.5), thickness: 0.5),
+
+        SpaceSizer(vertical: 2),
+
+        Padding(
+          padding: EdgeInsets.only(left: SizeConfig.horizontal(1)),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              PoppinsTextView(
+                value: 'Axon Vision v1.0.0',
+                size: SizeConfig.safeBlockHorizontal * 0.7,
+                color: AppColors.grey,
+                fontWeight: FontWeight.w500,
+              ),
+              PoppinsTextView(
+                value: '© 2024 All Rights Reserved',
+                size: SizeConfig.safeBlockHorizontal * 0.6,
+                color: AppColors.grey,
+              ),
+            ],
           ),
         ),
       ],
+    );
+  }
+
+  Widget _buildMenuItem({
+    required int index,
+    required String label,
+    required bool isActive,
+    required IconData icon,
+  }) {
+    return CustomRippleButton(
+      onTap: () => onMenuTap(index),
+      child: Container(
+        decoration: BoxDecoration(
+          color: isActive
+              ? AppColors.bgColor.withValues(alpha: 0.1)
+              : Colors.transparent,
+          borderRadius: BorderRadius.circular(8),
+        ),
+        padding: EdgeInsets.symmetric(
+          vertical: SizeConfig.vertical(1.2),
+          horizontal: SizeConfig.horizontal(1),
+        ),
+        margin: EdgeInsets.symmetric(horizontal: SizeConfig.horizontal(0.5)),
+        child: Row(
+          children: [
+            Icon(
+              icon,
+              size: SizeConfig.safeBlockHorizontal * 1.2,
+              color: isActive ? AppColors.bgColor : AppColors.grey,
+            ),
+            SpaceSizer(horizontal: 1),
+
+            Expanded(
+              child: PoppinsTextView(
+                value: label,
+                size: SizeConfig.safeBlockHorizontal * 0.85,
+                fontWeight: isActive ? FontWeight.bold : FontWeight.w500,
+                color: isActive ? AppColors.bgColor : AppColors.grey,
+              ),
+            ),
+            if (isActive)
+              Container(
+                width: 3,
+                height: SizeConfig.safeBlockHorizontal * 1.2,
+                decoration: BoxDecoration(
+                  color: AppColors.bgColor,
+                  borderRadius: BorderRadius.circular(2),
+                ),
+              ),
+          ],
+        ),
+      ),
     );
   }
 }

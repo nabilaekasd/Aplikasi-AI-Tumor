@@ -18,8 +18,14 @@ class DashboardController extends GetxController {
   final RxBool isSearching = RxBool(false);
   final int pageSize = 6;
   final RxInt _activeMenuIndex = 0.obs;
+  final RxBool isSidebarExpanded = true.obs;
   final RxInt changeTextMenu = RxInt(0);
   final Rx<DataPasienModel?> _selectedPasien = Rx<DataPasienModel?>(null);
+
+  void toggleSidebar() {
+    isSidebarExpanded.toggle();
+    update();
+  }
 
   int get activeMenuIndex => _activeMenuIndex.value;
   DataPasienModel? get selectedPasien => _selectedPasien.value;

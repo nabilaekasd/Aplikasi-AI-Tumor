@@ -14,21 +14,23 @@ class DashboardTabelAnalisis extends StatelessWidget {
     return GetBuilder<DashboardController>(
       init: DashboardController(),
       builder: (DashboardController dashboardController) => SfDataGrid(
+        columnWidthMode: ColumnWidthMode.fill,
         gridLinesVisibility: GridLinesVisibility.both,
         headerGridLinesVisibility: GridLinesVisibility.both,
         source: dashboardController.analisisDataSource, //todo: lanjut analisis
+
+        shrinkWrapRows: true,
 
         headerRowHeight: 40,
         rowHeight: 40,
         columns: <GridColumn>[
           GridColumn(
-            width: SizeConfig.horizontal(17.4),
             columnName: 'name',
             label: Container(
               color: AppColors.greySecond,
               alignment: Alignment.center,
               child: PoppinsTextView(
-                size: SizeConfig.safeBlockHorizontal * 1.0,
+                size: SizeConfig.safeBlockHorizontal * 0.8,
                 value: 'Nama Pasien',
                 fontWeight: FontWeight.bold,
               ),
@@ -36,12 +38,11 @@ class DashboardTabelAnalisis extends StatelessWidget {
           ),
           GridColumn(
             columnName: 'tanggal_scan',
-            width: SizeConfig.horizontal(17.4),
             label: Container(
               color: AppColors.greySecond,
               alignment: Alignment.center,
               child: PoppinsTextView(
-                size: SizeConfig.safeBlockHorizontal * 1.0,
+                size: SizeConfig.safeBlockHorizontal * 0.8,
                 value: 'Tanggal Scan',
                 fontWeight: FontWeight.bold,
               ),
@@ -49,25 +50,23 @@ class DashboardTabelAnalisis extends StatelessWidget {
           ),
           GridColumn(
             columnName: 'status',
-            width: SizeConfig.horizontal(17.4),
             label: Container(
               color: AppColors.greySecond,
               alignment: Alignment.center,
               child: PoppinsTextView(
-                size: SizeConfig.safeBlockHorizontal * 1.0,
+                size: SizeConfig.safeBlockHorizontal * 0.8,
                 value: 'Status',
                 fontWeight: FontWeight.bold,
               ),
             ),
           ),
           GridColumn(
-            width: SizeConfig.horizontal(17.4),
             columnName: 'estimasi',
             label: Container(
               color: AppColors.greySecond,
               alignment: Alignment.center,
               child: PoppinsTextView(
-                size: SizeConfig.safeBlockHorizontal * 1.0,
+                size: SizeConfig.safeBlockHorizontal * 0.8,
                 value: 'Estimasi Selesai',
                 fontWeight: FontWeight.bold,
               ),

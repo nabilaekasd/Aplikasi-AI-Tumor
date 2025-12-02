@@ -27,77 +27,157 @@ class LoginPage extends StatelessWidget {
       statusBarBrightness: Brightness.light,
       view: GetBuilder<LoginController>(
         init: LoginController(),
-        builder: (LoginController loginController) => Center(
-          child: Container(
-            width: SizeConfig.safeBlockHorizontal * 40,
-            height: SizeConfig.safeBlockVertical * 80,
-            decoration: BoxDecoration(
-              color: AppColors.white,
-              borderRadius: BorderRadius.all(
-                Radius.circular(SizeConfig.safeBlockHorizontal * 2.5),
-              ),
-            ),
-            child: Column(
-              children: [
-                Image.asset(
-                  AssetList.axonLogo,
-                  fit: BoxFit.cover,
-                  width: SizeConfig.safeBlockHorizontal * 30,
-                  height: SizeConfig.safeBlockVertical * 26,
+        builder: (LoginController loginController) => Row(
+          children: [
+            Expanded(
+              flex: 6,
+              child: Container(
+                decoration: BoxDecoration(
+                  color: AppColors.blueDark,
+                  image: const DecorationImage(
+                    image: NetworkImage(
+                      'https://img.freepik.com/free-photo/rendering-smart-home-device_23-2151039302.jpg?t=st=1716353000~exp=1716356600~hmac=example',
+                    ),
+                    fit: BoxFit.cover,
+                    opacity: 0.4,
+                  ),
                 ),
-
-                PoppinsTextView(
-                  value: 'Silakan login dengan akun Anda',
-                  size: SizeConfig.safeBlockHorizontal * 1.3,
-                ),
-                SpaceSizer(vertical: 8),
-                CustomTextField(
-                  title: '',
-                  width: 30,
-                  hintText: 'Username',
-                  fillColor: AppColors.white,
-                  borderRadius: 1.5,
-                ),
-                SpaceSizer(vertical: 2),
-                CustomTextPasswordField(
-                  width: 30,
-                  title: '',
-                  isPasswordField: true,
-                  hintText: 'Password',
-                  fillColor: AppColors.white,
-                  borderRadius: 1.5,
-                ),
-                SpaceSizer(vertical: 2),
-                Padding(
-                  padding: EdgeInsets.only(left: SizeConfig.horizontal(6)),
-                  child: Row(
+                child: Container(
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [
+                        AppColors.blueDark.withValues(alpha: 0.8),
+                        AppColors.bgColor.withValues(alpha: 0.9),
+                      ],
+                    ),
+                  ),
+                  padding: EdgeInsets.all(SizeConfig.horizontal(4)),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      PoppinsTextView(
-                        value: 'Lupa Password? ',
-                        size: SizeConfig.safeBlockHorizontal * 1.2,
+                      Image.asset(
+                        AssetList.axonLogo,
+                        width: SizeConfig.safeBlockHorizontal * 10,
+                        color: Colors.white,
                       ),
+                      SpaceSizer(vertical: 2),
                       PoppinsTextView(
-                        value: 'Hubungi Adminstrator',
-                        textDecoration: TextDecoration.underline,
-                        color: AppColors.blueColor,
-                        size: SizeConfig.safeBlockHorizontal * 1.2,
+                        value: 'Sistem Deteksi\nTumor Otak',
+                        size: SizeConfig.safeBlockHorizontal * 2.5,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      SpaceSizer(vertical: 2),
+
+                      PoppinsTextView(
+                        value:
+                            'Mendukung profesional medis dalam memberikan diagnosis.',
+                        size: SizeConfig.safeBlockHorizontal * 1.0,
+                        color: Colors.white.withValues(alpha: 0.8),
                       ),
                     ],
                   ),
                 ),
-                SpaceSizer(vertical: 3),
-                CustomFlatButton(
-                  width: SizeConfig.safeBlockHorizontal * 16,
-                  text: 'Login',
-                  radius: 1.5,
-                  onTap: () {
-                    router.replaceNamed('dashboard');
-                  },
-                  backgroundColor: AppColors.blueDark,
-                ),
-              ],
+              ),
             ),
-          ),
+            Expanded(
+              flex: 5,
+              child: Container(
+                color: AppColors.white,
+                padding: EdgeInsets.symmetric(
+                  horizontal: SizeConfig.horizontal(6),
+                ),
+                child: Center(
+                  child: SingleChildScrollView(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        PoppinsTextView(
+                          value: 'Selamat Datang Kembali!👋',
+                          size: SizeConfig.safeBlockHorizontal * 1.8,
+                          fontWeight: FontWeight.bold,
+                          color: AppColors.black,
+                        ),
+                        SpaceSizer(vertical: 1),
+                        PoppinsTextView(
+                          value: 'Silakan masukkan kredensial Anda.',
+                          size: SizeConfig.safeBlockHorizontal * 0.9,
+                          color: AppColors.grey,
+                        ),
+                        SpaceSizer(vertical: 2),
+
+                        // Form Username
+                        CustomTextField(
+                          title: 'Username/Email',
+                          titleFontWeight: FontWeight.w600,
+                          width: 100,
+                          hintText: 'Masukkan Username',
+                          fillColor: AppColors.white,
+                          borderRadius: 0.8,
+                        ),
+                        SpaceSizer(vertical: 2),
+
+                        //Form Password
+                        CustomTextPasswordField(
+                          width: 100,
+                          title: 'Password',
+                          titleFontWeight: FontWeight.w600,
+                          isPasswordField: true,
+                          hintText: 'Masukkan Password',
+                          fillColor: AppColors.white,
+                          borderRadius: 0.8,
+                        ),
+
+                        SpaceSizer(vertical: 1.5),
+
+                        // Lupa Password
+                        Align(
+                          alignment: Alignment.centerRight,
+                          child: InkWell(
+                            onTap: () {},
+                            child: PoppinsTextView(
+                              value: 'Lupa Password?',
+                              color: AppColors.blueColor,
+                              fontWeight: FontWeight.bold,
+                              size: SizeConfig.safeBlockHorizontal * 0.8,
+                            ),
+                          ),
+                        ),
+                        SpaceSizer(vertical: 3),
+
+                        // Tombol Login
+                        CustomFlatButton(
+                          width: double.infinity,
+                          height: SizeConfig.safeBlockVertical * 6,
+                          text: 'Masuk ke Dashboard',
+                          radius: 0.8,
+                          onTap: () {
+                            router.replaceNamed('dashboard');
+                          },
+                          backgroundColor: AppColors.bgColor,
+                          textColor: Colors.white,
+                          textSize: SizeConfig.safeBlockHorizontal * 1.0,
+                        ),
+                        SpaceSizer(vertical: 4),
+
+                        Center(
+                          child: PoppinsTextView(
+                            value: '© 2025 Axon Vision. All Rights Reserved.',
+                            size: SizeConfig.safeBlockHorizontal * 0.7,
+                            color: AppColors.grey,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );
